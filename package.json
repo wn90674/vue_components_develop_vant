@@ -2,11 +2,45 @@
   "name": "vue_components_develop_vant",
   "version": "0.1.0",
   "private": true,
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "vant:dev": "vant-cli dev",
+    "vant:test": "vant-cli test",
+    "vant:build": "vant-cli build",
+    "vant:lint": "vant-cli lint",
+    "release": "vant-cli release",
+    "build-site": "vant-cli build-site"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "vant commit-lint"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": "eslint --fix"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@vant"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "@vant/stylelint-config"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -16,6 +50,7 @@
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "@vant/cli": "^2.4.2",
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-plugin-typescript": "~4.3.0",
